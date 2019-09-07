@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_add"
+        android:text="@string/btn_add"
+        android:textSize="@dimen/textSize"/>
+
+    <Spinner
+        android:layout_width="@dimen/lebarDefault"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/tv_operator"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/tv_add"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        android:id="@+id/spn_dropdown"
+        android:entries="@array/operator"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_add"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/tv_operator"
+        android:text="@string/tv_operator"
+        android:textSize="@dimen/operanSize"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_operator"
+        android:layout_marginLeft="50dp"
+        android:id="@+id/tv_operan"
+        android:text="@string/tv_operan"
+        android:textSize="@dimen/operanSize"/>
+
+    <EditText
+        android:id="@+id/et_operand"
+        android:layout_width="@dimen/lebarDefault"
+        android:layout_height="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/spn_dropdown"
+        android:layout_toRightOf="@id/tv_operan"
+        android:layout_marginLeft="20dp"
+        android:textSize="15dp"
+        android:inputType="number"
+        android:background="@drawable/edit_text_style"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_operan"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_submit"
+        android:id="@+id/btn_submit"/>
+</RelativeLayout>

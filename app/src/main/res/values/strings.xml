@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TubesP3B</string>
+    <string name="main_title">Calculator</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_res">Result</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_save">Save</string>
+    <string name="tv_operator">Operator : </string>
+    <string name="tv_operan">Operand : </string>
+    <string name="btn_submit">Submit</string>
+    <string name="btn_close">Close</string>
+    <string name="result">The result is : </string>
+
+    <string-array name="operator">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

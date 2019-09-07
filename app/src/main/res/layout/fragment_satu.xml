@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".View.SatuFragment">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_title"
+            android:text="@string/main_title"
+            android:textSize="@dimen/textSize"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="0"
+            android:layout_below="@id/tv_title"
+            android:id="@+id/tv_total"
+            android:textSize="20dp"
+            android:layout_marginLeft="5dp"/>
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/tv_total"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_add"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/btn_add"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/btn_res"
+                android:id="@+id/btn_res"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/btn_add"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/btn_clear"
+                android:id="@+id/btn_clear"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/btn_res"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="@string/btn_save"
+                android:id="@+id/btn_save"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/btn_clear"/>
+
+    </RelativeLayout>
+
+</FrameLayout>
