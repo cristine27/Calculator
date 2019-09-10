@@ -49,17 +49,17 @@ public class OperationAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder vh = new ViewHolder(view);
+        ViewHolder vh;
         Operation op = (Operation)this.getItem(i);
         if(view==null){
             view = LayoutInflater.from(this.activity).inflate(R.layout.fragment_list,viewGroup,false);
-//            vh = new ViewHolder(view);
+            vh = new ViewHolder(view,mp);
             view.setTag(vh);
         }
         else{
             vh =(ViewHolder) view.getTag();
         }
-        vh.updateView(op);
+        vh.updateView(op,i);
 
         return view;
     }

@@ -29,7 +29,7 @@ public class SatuFragment extends Fragment {
     protected Button btn_clear;
     protected Button btn_save;
     protected ListView lst_view;
-
+    
     public SatuFragment() {
         // Required empty public constructor
     }
@@ -52,7 +52,7 @@ public class SatuFragment extends Fragment {
         this.btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String
             }
         });
 
@@ -80,6 +80,20 @@ public class SatuFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    protected void onPause(){
+        super.onPause();
+        this.pnd.saveBarang(etBarang.getText().toString());
+        this.pnd.saveHarga(etHarga.getText().toString());
+        this.pnd.saveKet(etKet.getText().toString());
+    }
+
+    protected void onResume(){
+        super.onResume();
+        this.etBarang.setText(this.pnd.getBarang());
+        this.etHarga.setText(this.pnd.getHarga());
+        this.etKet.setText(this.pnd.getKet());
     }
 
 }
