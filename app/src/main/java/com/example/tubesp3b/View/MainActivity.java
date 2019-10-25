@@ -1,10 +1,11 @@
 package com.example.tubesp3b.View;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.AlertDialog;
+import android.Manifest;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
@@ -13,39 +14,47 @@ import android.widget.ListView;
 
 
 import com.example.tubesp3b.Model.Operation;
+import com.example.tubesp3b.Model.ResultOperation;
 import com.example.tubesp3b.Presenter.MainPresenter;
 import com.example.tubesp3b.R;
 
+import java.util.LinkedList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements FragmentListener,IMainActivity {
+public class MainActivity extends AppCompatActivity implements FragmentListener {
     protected SatuFragment satuFragment;
     protected DuaFragment duaFragment;
-    protected FragmentListener fragmentListener;
     protected FragmentManager fragmentManager;
     private OperationAdapter adapter;
     private ListView lst_view;
     protected MainPresenter mainPresenter;
-
+    protected ResultOperation resultOperation;
+    protected ResultDialogFragment rdf;
+    protected FragmentTransaction ft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        this.rdf = new ResultDialogFragment();
+        this.resultOperation = new ResultOperation();
         this.satuFragment = new SatuFragment();
         this.duaFragment = new DuaFragment();
         this.lst_view = this.findViewById(R.id.list);
-        this.mainPresenter = new MainPresenter(this);
-//        this.mainPresenter.loadData(); bagian loaddata mainpresenter salah
         this.adapter = new OperationAdapter(this);
-//        this.lst_view.setAdapter(this.adapter);
-//bagian set adapter salah
+        this.mainPresenter = new MainPresenter(this.adapter.getList());
+
         this.fragmentManager = getSupportFragmentManager();
-        FragmentTransaction ft = this.fragmentManager.beginTransaction();
+        this.ft = this.fragmentManager.beginTransaction();
         ft.add(R.id.frame_container,this.satuFragment)
                 .addToBackStack(null)
                 .commit();
+
+
+
+//        this.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+        this.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
     }
 
     @Override
@@ -81,16 +90,32 @@ public class MainActivity extends AppCompatActivity implements FragmentListener,
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+
+//        View view = this.getCurrentFocus();
+//        if(view!=null){
+//            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+//            imm.hideSoftInputFromWindow(view.getWindowToken(),0)
+//        }
     }
 
     @Override
-    public void updateList(List<Operation> operations) {
-//        adapter.addList(operations);
+    public void add(Operation operation) {
+        this.satuFragment.add(operation);
     }
 
     @Override
-    public void resetAddForm() {
-        this.lst_view.removeAllViews();
-        this.satuFragment.tv_total.setText("0");
+    public int result(Operation operation) {
+        return resultOperation.getResult(operation);
+    }
+
+    public String getRes(){
+        return this.mainPresenter.res();
+    }
+
+    public void show(){
+        this.rdf.show(this.ft,this.getRes());
+    }
+    public List<Operation> getList(){
+        return this.adapter.getList();
     }
 }

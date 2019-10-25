@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TubesP3B</string>
+    <string name="app_name">Calculator - tubes</string>
     <string name="main_title">Calculator</string>
     <string name="btn_add">Add</string>
     <string name="btn_res">Result</string>
@@ -10,6 +10,8 @@
     <string name="btn_submit">Submit</string>
     <string name="btn_close">Close</string>
     <string name="result">The result is : </string>
+    <string name="openDrawer">Open Drawer</string>
+    <string name="closeDrawer">Close Drawer</string>
 
     <string-array name="operator">
         <item>+</item>

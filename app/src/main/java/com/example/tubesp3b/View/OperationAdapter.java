@@ -19,17 +19,15 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class OperationAdapter extends BaseAdapter {
-    private ArrayList<Operation> list_operation;
+    private List<Operation> list_operation;
     private Activity activity;
-    protected TextView tv_operator;
-    protected TextView tv_operand;
-    protected Operation operation;
     protected MainPresenter mp;
+    protected String save;
 
     public OperationAdapter(Activity activity) {
         this.activity = activity;
         this.list_operation = new ArrayList<Operation>();
-
+        this.save="";
     }
 
     @Override
@@ -49,24 +47,19 @@ public class OperationAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        ViewHolder vh;
-        Operation op = (Operation)this.getItem(i);
-        if(view==null){
-            view = LayoutInflater.from(this.activity).inflate(R.layout.fragment_list,viewGroup,false);
-            vh = new ViewHolder(view,mp);
-            view.setTag(vh);
-        }
-        else{
-            vh =(ViewHolder) view.getTag();
-        }
-        vh.updateView(op,i);
-
+        view=LayoutInflater.from(this.activity).inflate(R.layout.fragment_list, viewGroup, false);
+        ViewHolder viewHolder=new ViewHolder((view));
+        final Operation currOperation=(Operation) this.getItem(i);
+        viewHolder.updateView(currOperation);
+        ImageButton delete=viewHolder.ibTrash;
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                list_operation.remove(currOperation);
+                notifyDataSetChanged();
+            }
+        });
         return view;
-    }
-
-//    added
-    public void setPresenter(MainPresenter mp){
-        this.mp = mp;
     }
 
     public void add(Operation newOp){
@@ -82,41 +75,37 @@ public class OperationAdapter extends BaseAdapter {
         this.notifyDataSetChanged();
     }
 
-    public void update(List<Operation> getOperation){
+    public void Clear(){
+        this.list_operation.clear();
+        this.notifyDataSetChanged();
+    }
 
+    public List<Operation> getList(){
+        return this.list_operation;
+    }
+
+    public String getSave(){
+        for(int i = 0;i<list_operation.size();i++){
+            save +=list_operation.get(i).getOperator()+list_operation.get(i).getOperand();
+        }
+        return save;
     }
 }
 
 class ViewHolder{
     protected ImageButton ibTrash;
-    protected TextView tv_operator;
-    protected TextView tv_operand;
-//    protected Operation currOperation;
-//    commented
-    protected MainPresenter mp;
-    protected int idx;
+    protected TextView tv_list;
+    protected Operation operation;
+
 
 //    added mainpresenter, int idx
-    public ViewHolder(View view, final MainPresenter mp){
+    public ViewHolder(View view){
         this.ibTrash=view.findViewById(R.id.ib_trash);
-        this.tv_operator=view.findViewById(R.id.tv_operator);
-        this.tv_operand=view.findViewById(R.id.tv_operan);
-        this.mp = mp;
-
-        this.ibTrash.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(view.getId() == ibTrash.getId()){
-                    mp.deleteList(idx);
-                }
-            }
-        });
+        this.tv_list=view.findViewById(R.id.tv_list);
     }
 
-    public void updateView(Operation operation,int i){
-//        this.currOperation = operation;
-//        commented
-        this.tv_operand.setText(operation.getOperand());
-        this.tv_operator.setText(operation.getOperator());
+    public void updateView(Operation operation){
+        this.operation=operation;
+        this.tv_list.setText(operation.getOperator() + operation.getOperand());
     }
 }

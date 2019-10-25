@@ -5,15 +5,16 @@
     android:layout_width="match_parent">
 
     <TextView
-        android:layout_width="360dp"
+        android:layout_width="150dp"
         android:layout_height="50dp"
-        android:id="@+id/tv_list">
+        android:id="@+id/tv_list"
+        android:textSize="@dimen/textSize">
     </TextView>
     <ImageButton
         android:id="@+id/ib_trash"
         android:src="@android:drawable/ic_menu_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/tv_list">
+        android:layout_alignParentRight="true">
     </ImageButton>
 </RelativeLayout>

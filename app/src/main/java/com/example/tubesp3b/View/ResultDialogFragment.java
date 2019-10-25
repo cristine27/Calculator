@@ -2,6 +2,7 @@ package com.example.tubesp3b.View;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.example.tubesp3b.Model.ResultOperation;
 import com.example.tubesp3b.R;
 
 public class ResultDialogFragment extends DialogFragment {
@@ -31,7 +33,8 @@ public class ResultDialogFragment extends DialogFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.result_dialog_fragment, container, false);
-        TextView tv = view.findViewById(R.id.tv_result);
+        TextView tv = view.findViewById(R.id.tv_hasil);
+        tv.setText(getTag());
         this.btn_close = view.findViewById(R.id.btn_close);
         this.btn_close.setOnClickListener(new View.OnClickListener() {
             @Override

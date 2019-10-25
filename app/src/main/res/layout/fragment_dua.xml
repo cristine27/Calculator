@@ -7,61 +7,80 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:id="@+id/tv_add"
         android:text="@string/btn_add"
         android:textSize="@dimen/textSize"/>
 
-    <Spinner
-        android:layout_width="@dimen/lebarDefault"
-        android:layout_height="40dp"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@id/tv_operator"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/tv_add"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown"
-        android:id="@+id/spn_dropdown"
-        android:entries="@array/operator"/>
-
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_add"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/tv_operator"
-        android:text="@string/tv_operator"
-        android:textSize="@dimen/operanSize"/>
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="100dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_add"
+                android:layout_marginLeft="50dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/tv_operator"
+                android:text="@string/tv_operator"
+                android:textSize="@dimen/operanSize"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown"
+                android:id="@+id/spn_dropdown"
+                android:entries="@array/operator"
+                android:layout_marginLeft="20dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:id="@+id/tv_operan"
+                android:text="@string/tv_operan"
+                android:textSize="@dimen/operanSize"/>
+
+            <EditText
+                android:id="@+id/et_operand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="number"
+                android:background="@drawable/edit_text_style"
+                android:textSize="@dimen/textSize"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+        </LinearLayout>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_operator"
-        android:layout_marginLeft="50dp"
-        android:id="@+id/tv_operan"
-        android:text="@string/tv_operan"
-        android:textSize="@dimen/operanSize"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/btn_submit"
+            android:id="@+id/btn_submit"
+            android:layout_gravity="center_horizontal"/>
 
-    <EditText
-        android:id="@+id/et_operand"
-        android:layout_width="@dimen/lebarDefault"
-        android:layout_height="35dp"
-        android:layout_marginTop="20dp"
-        android:layout_below="@id/spn_dropdown"
-        android:layout_toRightOf="@id/tv_operan"
-        android:layout_marginLeft="20dp"
-        android:textSize="15dp"
-        android:inputType="number"
-        android:background="@drawable/edit_text_style"/>
+    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_operan"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="20dp"
-        android:text="@string/btn_submit"
-        android:id="@+id/btn_submit"/>
+
+    <!--        android:layout_below="@id/tv_operan"-->
 </RelativeLayout>
